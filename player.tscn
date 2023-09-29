@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch7udf2ipn4cw"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_rct5t"]
+[ext_resource type="Texture2D" uid="uid://cwgh0rymwogkk" path="res://kenney_pixelshmup/Ships/ship_0002.png" id="2_60ifk"]
+[ext_resource type="PackedScene" uid="uid://dqq37lo3lroxk" path="res://bullet.tscn" id="2_wvibs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5ed3"]
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_rct5t")
+bullet_scene = ExtResource("2_wvibs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_60ifk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.455)
+scale = Vector2(1.42, 1)
+shape = SubResource("CircleShape2D_m5ed3")
