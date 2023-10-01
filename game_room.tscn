@@ -28,9 +28,9 @@ position = Vector2(320, 240)
 shape = SubResource("RectangleShape2D_71ul8")
 debug_color = Color(0.819608, 0, 0.968627, 0.109804)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HudCanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HudBackground" type="Sprite2D" parent="CanvasLayer"]
+[node name="HudBackground" type="Sprite2D" parent="HudCanvasLayer"]
 position = Vector2(0, 404)
 texture = ExtResource("3_tk4wu")
 centered = false
