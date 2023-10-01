@@ -1,21 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch7udf2ipn4cw"]
+[gd_scene load_steps=8 format=3 uid="uid://ch7udf2ipn4cw"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_rct5t"]
-[ext_resource type="Texture2D" uid="uid://cwgh0rymwogkk" path="res://kenney_pixelshmup/Ships/ship_0002.png" id="2_60ifk"]
 [ext_resource type="PackedScene" uid="uid://dqq37lo3lroxk" path="res://bullet.tscn" id="2_wvibs"]
+[ext_resource type="Texture2D" uid="uid://dal8s7kr66v7w" path="res://Resources1945/myplane/myplane_1.png" id="3_jaxsa"]
+[ext_resource type="Texture2D" uid="uid://d20l5epglmbtm" path="res://Resources1945/myplane/myplane_2.png" id="4_fugdd"]
+[ext_resource type="Texture2D" uid="uid://d1d2sd24il3xk" path="res://Resources1945/myplane/myplane_3.png" id="5_k0bv5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ne8n0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jaxsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fugdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k0bv5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m5ed3"]
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(2, 2)
 script = ExtResource("1_rct5t")
 bullet_scene = ExtResource("2_wvibs")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("2_60ifk")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ne8n0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.455)
-scale = Vector2(1.42, 1)
+position = Vector2(0, 2)
+scale = Vector2(3, 2)
 shape = SubResource("CircleShape2D_m5ed3")
