@@ -19,7 +19,7 @@ animations = [{
 "texture": ExtResource("5_k0bv5")
 }],
 "loop": true,
-"name": &"default",
+"name": &"myplane_default",
 "speed": 30.0
 }]
 
@@ -31,8 +31,8 @@ bullet_scene = ExtResource("2_wvibs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ne8n0")
-autoplay = "default"
-frame_progress = 0.0294471
+animation = &"myplane_default"
+autoplay = "myplane_default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
