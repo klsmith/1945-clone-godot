@@ -34,10 +34,10 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			get_tree().quit(); # ESC => Quit Game
-		if event.pressed and event.keycode == KEY_SPACE:
+		if event.pressed and !event.is_echo() and event.keycode == KEY_SPACE:
 			fire_bullet();
 
 func fire_bullet():
-	var bullet = bullet_scene.instantiate() as Bullet;
+	var bullet = bullet_scene.instantiate();
 	get_parent().add_child(bullet);
 	bullet.global_position = self.global_position;
