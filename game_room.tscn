@@ -2,12 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://ddj380hoc6u2w" path="res://Resources1945/backgrounds/water.png" id="1_qt3l5"]
 [ext_resource type="PackedScene" uid="uid://ch7udf2ipn4cw" path="res://player.tscn" id="2_5pa5u"]
-[ext_resource type="Texture2D" uid="uid://b8jb7kw6xvf8s" path="res://Resources1945/hud_background.png" id="3_tk4wu"]
+[ext_resource type="Texture2D" uid="uid://b8jb7kw6xvf8s" path="res://Resources1945/backgrounds/hud_background.png" id="3_14v20"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71ul8"]
 size = Vector2(640, 480)
 
 [node name="GameRoom" type="Node2D"]
+texture_filter = 1
 position = Vector2(0, -1)
 
 [node name="Player" parent="." instance=ExtResource("2_5pa5u")]
@@ -32,5 +33,5 @@ debug_color = Color(0.819608, 0, 0.968627, 0.109804)
 
 [node name="HudBackground" type="Sprite2D" parent="HudCanvasLayer"]
 position = Vector2(0, 404)
-texture = ExtResource("3_tk4wu")
+texture = ExtResource("3_14v20")
 centered = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sa5wx38k72ht"
-path="res://.godot/imported/small_explosion_1.png-bfd937eef7c0576eee609402a8fc5a5d.ctex"
+uid="uid://b8jb7kw6xvf8s"
+path="res://.godot/imported/hud_background.png-fb03cbd5bb66499a83392134c4b20b29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources1945/small_explosion/small_explosion_1.png"
-dest_files=["res://.godot/imported/small_explosion_1.png-bfd937eef7c0576eee609402a8fc5a5d.ctex"]
+source_file="res://Resources1945/backgrounds/hud_background.png"
+dest_files=["res://.godot/imported/hud_background.png-fb03cbd5bb66499a83392134c4b20b29.ctex"]
 
 [params]
 

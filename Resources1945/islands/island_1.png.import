@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8jb7kw6xvf8s"
-path="res://.godot/imported/hud_background.png-f83116e25efa51f9dc76434a4ab37a60.ctex"
+uid="uid://dmnhbdl7yqso6"
+path="res://.godot/imported/island_1.png-65490ce14b413c88de852b1bc93fdafc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources1945/hud_background.png"
-dest_files=["res://.godot/imported/hud_background.png-f83116e25efa51f9dc76434a4ab37a60.ctex"]
+source_file="res://Resources1945/islands/island_1.png"
+dest_files=["res://.godot/imported/island_1.png-65490ce14b413c88de852b1bc93fdafc.ctex"]
 
 [params]
 
