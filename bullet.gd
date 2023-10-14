@@ -4,12 +4,11 @@ class_name Bullet
 
 @export var speed: int = 600;
 
-@onready var screen_checker := $ScreenChecker as VisibleOnScreenNotifier2D; 
+@onready var screen_checker := $VisibleOnScreenNotifier2D; 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_checker.screen_exited.connect(on_screen_exit)
-	pass # Replace with function body.
 
 func on_screen_exit():
 	queue_free() # destroy self

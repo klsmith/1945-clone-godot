@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c462n8iuyc85b"]
+[gd_scene load_steps=7 format=3 uid="uid://c462n8iuyc85b"]
 
 [ext_resource type="Texture2D" uid="uid://ddj380hoc6u2w" path="res://Resources1945/backgrounds/water.png" id="1_qt3l5"]
 [ext_resource type="PackedScene" uid="uid://ch7udf2ipn4cw" path="res://player.tscn" id="2_5pa5u"]
@@ -7,13 +7,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71ul8"]
 size = Vector2(640, 480)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcl2b"]
+size = Vector2(640, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0ili"]
+size = Vector2(76, 480)
+
 [node name="GameRoom" type="Node2D"]
 texture_filter = 1
 position = Vector2(0, -1)
-
-[node name="Player" parent="." instance=ExtResource("2_5pa5u")]
-z_index = 2
-position = Vector2(315, 375)
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
@@ -29,9 +31,34 @@ position = Vector2(320, 240)
 shape = SubResource("RectangleShape2D_71ul8")
 debug_color = Color(0.819608, 0, 0.968627, 0.109804)
 
-[node name="HudCanvasLayer" type="CanvasLayer" parent="."]
+[node name="Player" parent="." instance=ExtResource("2_5pa5u")]
+z_index = 2
+position = Vector2(320, 375)
 
-[node name="HudBackground" type="Sprite2D" parent="HudCanvasLayer"]
-position = Vector2(0, 404)
+[node name="HudBackground" type="Sprite2D" parent="."]
+position = Vector2(320, 442)
 texture = ExtResource("3_14v20")
-centered = false
+
+[node name="BottomBorder" type="StaticBody2D" parent="."]
+position = Vector2(320, 442)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBorder"]
+shape = SubResource("RectangleShape2D_qcl2b")
+
+[node name="TopBorder" type="StaticBody2D" parent="."]
+position = Vector2(320, -38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBorder"]
+shape = SubResource("RectangleShape2D_qcl2b")
+
+[node name="LeftBorder" type="StaticBody2D" parent="."]
+position = Vector2(-38, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBorder"]
+shape = SubResource("RectangleShape2D_o0ili")
+
+[node name="RightBorder" type="StaticBody2D" parent="."]
+position = Vector2(678, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBorder"]
+shape = SubResource("RectangleShape2D_o0ili")

@@ -10,4 +10,4 @@ script = ExtResource("1_8ytxe")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_v05s4")
 
-[node name="ScreenChecker" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

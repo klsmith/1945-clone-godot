@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 # This is configurable in the editor
 @export var speed: int = 400;
@@ -8,6 +8,7 @@ extends Node2D
 # Similar to Game Maker's "Create" event
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	motion_mode = MOTION_MODE_FLOATING
 	pass # not doing anything, I just wanted to explain it
 
 # Similar to Game Maker's "Step" event
@@ -17,8 +18,12 @@ func _physics_process(delta):
 		"player_right",
 		"player_up",
 		"player_down"
-	);
-	translate(input * (speed * delta));
+	)
+	velocity = input * speed
+	move_and_slide()
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		print("I collided with ", c.get_collider().name)
 
 # Similar to Game Maker's "Draw" event
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,11 +38,11 @@ func _process(_delta):
 func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
-			get_tree().quit(); # ESC => Quit Game
+			get_tree().quit() # ESC => Quit Game
 		if event.pressed and !event.is_echo() and event.keycode == KEY_SPACE:
-			fire_bullet();
+			fire_bullet()
 
 func fire_bullet():
-	var bullet = bullet_scene.instantiate();
-	get_parent().add_child(bullet);
-	bullet.global_position = self.global_position;
+	var bullet = bullet_scene.instantiate()
+	get_parent().add_child(bullet)
+	bullet.global_position = self.global_position
