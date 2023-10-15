@@ -2,14 +2,21 @@ extends CharacterBody2D
 
 # This is configurable in the editor
 @export var speed: int = 400;
-
 @export var bullet_scene: PackedScene;
+
+@onready var shoot_timer := $ShootTimer as Timer;
+
+var _fire_button: bool = false;
+var _can_shoot: bool = true;
 
 # Similar to Game Maker's "Create" event
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	motion_mode = MOTION_MODE_FLOATING
-	pass # not doing anything, I just wanted to explain it
+	shoot_timer.timeout.connect(on_shoot_timer)
+
+func on_shoot_timer():
+	_can_shoot = true
 
 # Similar to Game Maker's "Step" event
 func _physics_process(delta):
@@ -21,9 +28,7 @@ func _physics_process(delta):
 	)
 	velocity = input * speed
 	move_and_slide()
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		print("I collided with ", c.get_collider().name)
+	if _fire_button: fire_bullet()
 
 # Similar to Game Maker's "Draw" event
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,13 +41,17 @@ func _process(_delta):
 # The regular _input(event) method is often used by GUI and then game objects
 # use _unhandled_input(event) in order to let the GUI code have first dibs
 func _unhandled_input(event):
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_ESCAPE:
-			get_tree().quit() # ESC => Quit Game
-		if event.pressed and !event.is_echo() and event.keycode == KEY_SPACE:
-			fire_bullet()
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit() # ESC => Quit Game
+	if event.is_action_pressed("player_shoot"):
+		_fire_button = true
+	if event.is_action_released("player_shoot"):
+		_fire_button = false
 
 func fire_bullet():
+	if not _can_shoot: return
 	var bullet = bullet_scene.instantiate()
 	get_parent().add_child(bullet)
 	bullet.global_position = self.global_position
+	_can_shoot = false
+	shoot_timer.start()
