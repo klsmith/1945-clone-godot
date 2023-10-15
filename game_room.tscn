@@ -1,11 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://c462n8iuyc85b"]
 
+[ext_resource type="Script" path="res://scrolling_background.gd" id="1_g4vpw"]
 [ext_resource type="Texture2D" uid="uid://ddj380hoc6u2w" path="res://Resources1945/backgrounds/water.png" id="1_qt3l5"]
 [ext_resource type="PackedScene" uid="uid://ch7udf2ipn4cw" path="res://player.tscn" id="2_5pa5u"]
 [ext_resource type="Texture2D" uid="uid://b8jb7kw6xvf8s" path="res://Resources1945/backgrounds/hud_background.png" id="3_14v20"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_71ul8"]
-size = Vector2(640, 480)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qcl2b"]
 size = Vector2(640, 76)
@@ -17,48 +15,43 @@ size = Vector2(76, 480)
 texture_filter = 1
 position = Vector2(0, -1)
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="ScrollingBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_g4vpw")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ScrollingBackground"]
+motion_mirroring = Vector2(0, 320)
+
+[node name="Background" type="Sprite2D" parent="ScrollingBackground/ParallaxLayer"]
 texture_repeat = 2
+position = Vector2(0, -1)
 texture = ExtResource("1_qt3l5")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 640, 480)
-
-[node name="GameZone" type="Area2D" parent="."]
-position = Vector2(320, 240)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameZone"]
-shape = SubResource("RectangleShape2D_71ul8")
-debug_color = Color(0.819608, 0, 0.968627, 0.109804)
 
 [node name="Player" parent="." instance=ExtResource("2_5pa5u")]
 z_index = 2
 position = Vector2(320, 375)
 
 [node name="HudBackground" type="Sprite2D" parent="."]
-position = Vector2(320, 442)
+position = Vector2(320, 443)
 texture = ExtResource("3_14v20")
 
-[node name="BottomBorder" type="StaticBody2D" parent="."]
+[node name="WorldBounds" type="StaticBody2D" parent="."]
 position = Vector2(320, 442)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBorder"]
+[node name="BottomBorder" type="CollisionShape2D" parent="WorldBounds"]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_qcl2b")
 
-[node name="TopBorder" type="StaticBody2D" parent="."]
-position = Vector2(320, -38)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBorder"]
+[node name="TopBorder" type="CollisionShape2D" parent="WorldBounds"]
+position = Vector2(0, -480)
 shape = SubResource("RectangleShape2D_qcl2b")
 
-[node name="LeftBorder" type="StaticBody2D" parent="."]
-position = Vector2(-38, 200)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBorder"]
+[node name="LeftBorder" type="CollisionShape2D" parent="WorldBounds"]
+position = Vector2(-358, -242)
 shape = SubResource("RectangleShape2D_o0ili")
 
-[node name="RightBorder" type="StaticBody2D" parent="."]
-position = Vector2(678, 200)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBorder"]
+[node name="RightBorder" type="CollisionShape2D" parent="WorldBounds"]
+position = Vector2(358, -242)
 shape = SubResource("RectangleShape2D_o0ili")
