@@ -1,6 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dxift8acsotg6"]
-
-[ext_resource type="Texture2D" uid="uid://dum0dhlprdkdv" path="res://Blue_Nebula_08-512x512.png" id="1_66lup"]
-
-[resource]
-albedo_texture = ExtResource("1_66lup")

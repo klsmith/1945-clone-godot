@@ -1,15 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://c462n8iuyc85b"]
+[gd_scene load_steps=10 format=3 uid="uid://c462n8iuyc85b"]
 
 [ext_resource type="Script" path="res://scrolling_background.gd" id="1_g4vpw"]
 [ext_resource type="Texture2D" uid="uid://ddj380hoc6u2w" path="res://Resources1945/backgrounds/water.png" id="1_qt3l5"]
-[ext_resource type="PackedScene" uid="uid://ch7udf2ipn4cw" path="res://player.tscn" id="2_5pa5u"]
+[ext_resource type="PackedScene" uid="uid://ch7udf2ipn4cw" path="res://player/player.tscn" id="2_5pa5u"]
 [ext_resource type="Texture2D" uid="uid://b8jb7kw6xvf8s" path="res://Resources1945/backgrounds/hud_background.png" id="3_14v20"]
+[ext_resource type="Script" path="res://enemies/enemy_spawner.gd" id="5_ksvse"]
+[ext_resource type="Script" path="res://enemies/enemy_spawn_config.gd" id="6_mwofh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qcl2b"]
 size = Vector2(640, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0ili"]
 size = Vector2(76, 480)
+
+[sub_resource type="Resource" id="Resource_3ws07"]
+script = ExtResource("6_mwofh")
+spawn_priority = 1
 
 [node name="GameRoom" type="Node2D"]
 texture_filter = 1
@@ -55,3 +61,7 @@ shape = SubResource("RectangleShape2D_o0ili")
 [node name="RightBorder" type="CollisionShape2D" parent="WorldBounds"]
 position = Vector2(358, -242)
 shape = SubResource("RectangleShape2D_o0ili")
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("5_ksvse")
+spawn_config = Array[ExtResource("6_mwofh")]([SubResource("Resource_3ws07")])
